@@ -9,3 +9,9 @@ Wiggle is …
     npm run build
     npm run start
     npm run package
+
+# Copyright
+
+* Wiggle includes BetterTTV from https://github.com/night/betterttv
+
+For all copyright notices see [COPYRIGHT.md](COPYRIGHT.md)
