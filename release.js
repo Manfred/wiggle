@@ -44,8 +44,8 @@
   var { app, BrowserWindow } = require_electron();
   var createWindow = () => {
     const window = new BrowserWindow({
-      width: 1100,
-      height: 648,
+      width: 1340,
+      height: 783,
       backgroundColor: "#404040",
       show: false
     });
@@ -63,7 +63,6 @@
     createWindow();
   });
   app.on("window-all-closed", () => {
-    if (process.platform !== "darwin")
-      app.quit();
+    app.quit();
   });
 })();
