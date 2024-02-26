@@ -1,6 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-const path = require('node:path')
-const bettertvPath = path.join(__dirname, 'betterttv/betterttv.js')
+const betterttvPath = require('path').join(__dirname, 'betterttv/betterttv.js')
 
 const createWindow = () => {
   const window = new BrowserWindow({
@@ -23,7 +22,7 @@ const createWindow = () => {
         const head = document.getElementsByTagName('head')[0]
         const script = document.createElement('script')
         script.type = 'text/javascript'
-        script.src = 'file://${bettertvPath}'
+        script.src = 'file://${betterttvPath}'
         head.appendChild(script)
       })()`,
       true
