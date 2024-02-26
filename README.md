@@ -6,6 +6,9 @@ Wiggle is …
 
 # Build
 
+Install node and yarn, then:
+
+    yarn install
     npm run build
     npm run start
     npm run package
