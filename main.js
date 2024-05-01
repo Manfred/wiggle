@@ -10,6 +10,7 @@ const createWindow = () => {
       webSecurity: false
     }
   })
+  // window.webContents.openDevTools()
   window.webContents.on('will-navigate', (event, url) => {
     if (url.indexOf('https://www.twitch.tv') !== 0) {
       event.preventDefault()
@@ -25,6 +26,22 @@ const createWindow = () => {
         script.src = 'file://${betterttvPath}'
         head.appendChild(script)
       })()`,
+      true
+    )
+  })
+  window.webContents.on('did-finish-load', () => {
+    window.webContents.executeJavaScript(
+      `setTimeout(function() {
+        // Remove terms of service banner.
+        const bannerTOS = document.querySelector('div[class="Layout-sc-1xcs6mc-0 jWeQYG"]')
+        console.log(bannerTOS)
+        if (bannerTOS) bannerTOS.remove()
+
+        // Remove TwitchCon banner.
+        const footer = document.getElementById('twilight-sticky-footer-root').remove()
+        console.log(footer)
+        if (footer) footer.remove()
+      }, 500)`,
       true
     )
   })
