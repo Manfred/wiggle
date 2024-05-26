@@ -1,23 +1,24 @@
-const { app, BrowserWindow } = require('electron')
-const betterttvPath = require('path').join(__dirname, 'betterttv/betterttv.js')
+const { app, BrowserWindow } = require("electron")
+const betterttvPath = require("path").join(__dirname, "betterttv/betterttv.js")
 
 const createWindow = () => {
   const window = new BrowserWindow({
-    width: 1340, height: 783,
-    backgroundColor: '#404040',
+    width: 1340,
+    height: 783,
+    backgroundColor: "#404040",
     show: false,
     webPreferences: {
-      webSecurity: false
-    }
+      webSecurity: false,
+    },
   })
   // window.webContents.openDevTools()
-  window.webContents.on('will-navigate', (event, url) => {
-    if (url.indexOf('https://www.twitch.tv') !== 0) {
+  window.webContents.on("will-navigate", (event, url) => {
+    if (url.indexOf("https://www.twitch.tv") !== 0) {
       event.preventDefault()
     }
   })
-  window.webContents.on('did-navigate', (event, url) => {
-    if (url.indexOf('https://www.twitch.tv') !== 0) return
+  window.webContents.on("did-navigate", (event, url) => {
+    if (url.indexOf("https://www.twitch.tv") !== 0) return
     window.webContents.executeJavaScript(
       `(function() {
         const head = document.getElementsByTagName('head')[0]
@@ -26,27 +27,31 @@ const createWindow = () => {
         script.src = 'file://${betterttvPath}'
         head.appendChild(script)
       })()`,
-      true
+      true,
     )
   })
-  window.webContents.on('did-finish-load', () => {
+  window.webContents.on("did-finish-load", () => {
     window.webContents.executeJavaScript(
-      `setTimeout(function() {
+      `let count = 0
+      window.contentScrubber = setInterval(function() {
         // Remove terms of service banner.
         const bannerTOS = document.querySelector('div[class="Layout-sc-1xcs6mc-0 jWeQYG"]')
         console.log(bannerTOS)
         if (bannerTOS) bannerTOS.remove()
 
         // Remove TwitchCon banner.
-        const footer = document.getElementById('twilight-sticky-footer-root').remove()
+        const footer = document.getElementById('twilight-sticky-footer-root')
         console.log(footer)
         if (footer) footer.remove()
+
+        if (count > 5) { clearInterval(window.contentScrubber) }
+        count++
       }, 500)`,
-      true
+      true,
     )
   })
-  window.loadURL('https://www.twitch.tv/directory/following')
-  window.once('ready-to-show', () => {
+  window.loadURL("https://www.twitch.tv/directory/following")
+  window.once("ready-to-show", () => {
     window.show()
   })
 }
@@ -55,6 +60,6 @@ app.whenReady().then(() => {
   createWindow()
 })
 
-app.on('window-all-closed', () => {
+app.on("window-all-closed", () => {
   app.quit()
 })
