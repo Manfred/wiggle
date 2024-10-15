@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require("electron")
 const betterttvPath = require("path").join(__dirname, "betterttv/betterttv.js")
+const stylingPath = require("path").join(__dirname, "style/override.css")
 
 const createWindow = () => {
   const window = new BrowserWindow({
@@ -26,27 +27,11 @@ const createWindow = () => {
         script.type = 'text/javascript'
         script.src = 'file://${betterttvPath}'
         head.appendChild(script)
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = 'file://${stylingPath}'
+         head.appendChild(link)
       })()`,
-      true,
-    )
-  })
-  window.webContents.on("did-finish-load", () => {
-    window.webContents.executeJavaScript(
-      `let count = 0
-      window.contentScrubber = setInterval(function() {
-        // Remove terms of service banner.
-        const bannerTOS = document.querySelector('div[class="Layout-sc-1xcs6mc-0 jWeQYG"]')
-        console.log(bannerTOS)
-        if (bannerTOS) bannerTOS.remove()
-
-        // Remove TwitchCon banner.
-        const footer = document.getElementById('twilight-sticky-footer-root')
-        console.log(footer)
-        if (footer) footer.remove()
-
-        if (count > 5) { clearInterval(window.contentScrubber) }
-        count++
-      }, 500)`,
       true,
     )
   })
