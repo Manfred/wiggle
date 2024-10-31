@@ -1,6 +1,6 @@
 {
   "name": "Wiggle",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Application around the Twitch website to improve user interaction and chat.",
   "main": "main.js",
   "author": "Backseed",
