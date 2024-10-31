@@ -9,9 +9,12 @@
     "build": "esbuild main.js --bundle --outfile=release.js",
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "app:dir": "electron-builder --dir",
+    "app:dist": "electron-builder"
   },
   "build": {
+    "appId": "im.erm.Wiggle",
     "extraResources": [
       "./vendor/**"
     ]
@@ -27,7 +30,8 @@
     "@electron-forge/maker-squirrel": "^7",
     "@electron-forge/maker-zip": "^7",
     "@electron-forge/plugin-auto-unpack-natives": "^7",
-    "electron": "^33.0.2"
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8"
   },
   "browser": {
     "fs": false,
