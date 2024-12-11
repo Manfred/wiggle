@@ -6,3 +6,5 @@
 .htbASg { display: none; }
 /* Prime message count */
 .kvGBug { display: none; }
+/* Twitch Recap banner, and likely others. */
+#twilight-sticky-footer-root { display: none; }
