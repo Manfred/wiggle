@@ -12,3 +12,4 @@ jobs:
           node-version: 23
       - run: yarn install
       - run: npm run package
+      - run: ls -al out/
