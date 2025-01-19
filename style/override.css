@@ -1,3 +1,9 @@
+/* Stories interface */
+.lcFJxY {
+  /* Twitch overrides the display attribute so just move the element off screen. */
+  position: fixed;
+  left: 100%;
+}
 /* Terms of service banner */
 .jWeQYG { display: none; }
 /* Cookie banner */
