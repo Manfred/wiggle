@@ -8,5 +8,5 @@ rm -Rf *
 tar xvzf ~/Downloads/betterttv.tar.gz
 cd ..
 git add .
-git commit -v "Update BetterTTV to version x."
+git commit -m "Update BetterTTV to version x.x.x."
 ```
