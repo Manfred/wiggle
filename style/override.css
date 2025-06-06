@@ -5,12 +5,14 @@
   left: 100%;
 }
 /* Terms of service banner */
-.jWeQYG { display: none; }
+.eLLosC { display: none; }
 /* Cookie banner */
-.lcpZLv > .gUvyVO { display: none; }
+.djatEz { display: none; }
 /* SUBtember banner */
 .htbASg { display: none; }
 /* Prime message count */
 .kvGBug { display: none; }
 /* Twitch Recap banner, and likely others. */
 #twilight-sticky-footer-root { display: none; }
+/* Generic popover */
+.ReactModal__Overlay { display: none; }
