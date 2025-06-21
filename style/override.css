@@ -1,18 +1,14 @@
 /* Stories interface */
-.lcFJxY {
+.Layout-sc-1xcs6mc-0 .dKitkM {
   /* Twitch overrides the display attribute so just move the element off screen. */
   position: fixed;
   left: 100%;
 }
 /* Terms of service banner */
-.eLLosC { display: none; }
+.iSpCDu { display: none; }
 /* Cookie banner */
-.djatEz { display: none; }
-/* SUBtember banner */
-.htbASg { display: none; }
+*:has(> .consent-banner) { display: none; }
 /* Prime message count */
-.kvGBug { display: none; }
+.prime-offers__pill { display: none; }
 /* Twitch Recap banner, and likely others. */
 #twilight-sticky-footer-root { display: none; }
-/* Generic popover */
-.ReactModal__Overlay { display: none; }
