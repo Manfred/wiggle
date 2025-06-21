@@ -20,8 +20,7 @@
     ]
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1",
-    "esbuild": "^0.24.2"
+    "esbuild": "^0.25.5"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7",
@@ -30,8 +29,8 @@
     "@electron-forge/maker-squirrel": "^7",
     "@electron-forge/maker-zip": "^7",
     "@electron-forge/plugin-auto-unpack-natives": "^7",
-    "electron": "^33.3.1",
-    "electron-builder": "^25.1.8"
+    "electron": "^36.5.0",
+    "electron-builder": "^26.0.12"
   },
   "browser": {
     "fs": false,
