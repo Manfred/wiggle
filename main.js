@@ -1,6 +1,72 @@
-const { app, BrowserWindow } = require("electron")
+const { app, BrowserWindow, Menu } = require("electron")
 const betterttvPath = require("path").join(__dirname, "betterttv/betterttv.js")
 const stylingPath = require("path").join(__dirname, "style/override.css")
+
+const isMac = process.platform === 'darwin'
+const menu = Menu.buildFromTemplate(
+  [
+    ...(
+      isMac
+      ? [{
+          label: app.name,
+          submenu: [
+            { role: 'about' },
+            { type: 'separator' },
+            { role: 'services' },
+            { type: 'separator' },
+            { role: 'hide' },
+            { role: 'hideOthers' },
+            { role: 'unhide' },
+            { type: 'separator' },
+            { role: 'quit' }
+          ]
+        }]
+      : []
+    ),
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    },
+    {
+      label: 'Window',
+      submenu: [
+        { role: 'minimize' },
+        { role: 'zoom' },
+        { type: 'separator' },
+        {
+          label: "Resize…",
+          submenu: [
+            {
+              label: "Medium",
+              accelerator: "CommandOrControl+1",
+              click (item, focusedWindow) {
+                if (focusedWindow) focusedWindow.setSize(1340, 783)
+              }
+            },
+            {
+              label: "Small",
+              accelerator: "CommandOrControl+2",
+              click (item, focusedWindow) {
+                if (focusedWindow) focusedWindow.setSize(670, 391)
+              }
+            },
+          ]
+        }
+      ]
+    },
+  ]
+)
+Menu.setApplicationMenu(menu)
 
 const createWindow = () => {
   const window = new BrowserWindow({
