@@ -50,14 +50,14 @@ const menu = Menu.buildFromTemplate(
               label: "Medium",
               accelerator: "CommandOrControl+1",
               click (item, focusedWindow) {
-                if (focusedWindow) focusedWindow.setSize(1340, 783)
+                if (focusedWindow) focusedWindow.setSize(1370, 798)
               }
             },
             {
               label: "Small",
               accelerator: "CommandOrControl+2",
               click (item, focusedWindow) {
-                if (focusedWindow) focusedWindow.setSize(670, 391)
+                if (focusedWindow) focusedWindow.setSize(685, 416)
               }
             },
           ]
@@ -70,8 +70,8 @@ Menu.setApplicationMenu(menu)
 
 const createWindow = () => {
   const window = new BrowserWindow({
-    width: 1340,
-    height: 783,
+    width: 1370,
+    height: 798,
     backgroundColor: "#404040",
     show: false,
     webPreferences: {
